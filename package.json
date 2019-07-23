@@ -1,0 +1,22 @@
+{
+  "name": "pos-machine-tasking",
+  "version": "1.0.0",
+  "description": "implement pos machine",
+  "main": "pos-machine.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shmilycherish/Pos-Machine-Tasking.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shmilycherish/Pos-Machine-Tasking/issues"
+  },
+  "homepage": "https://github.com/shmilycherish/Pos-Machine-Tasking#readme",
+  "devDependencies": {
+    "jest": "^24.8.0"
+  }
+}
