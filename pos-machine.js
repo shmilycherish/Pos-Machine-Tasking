@@ -50,4 +50,8 @@ function generateReceiptBody(items) {
     return items.map(item => generateItemForReceipt(item)).join('\n');
 }
 
-module.exports = {printReceipt, findItemByBarcode, tagItems, generateItemForReceipt, generateReceiptBody};
+function getTotalPrice(items) {
+    return items.reduce((total, item) => total + item.price * item.count, 0)
+}
+
+module.exports = {printReceipt, findItemByBarcode, tagItems, generateItemForReceipt, generateReceiptBody, getTotalPrice};

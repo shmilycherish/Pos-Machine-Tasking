@@ -1,5 +1,5 @@
 
-const {printReceipt, findItemByBarcode, tagItems, generateItemForReceipt, generateReceiptBody} = require('../pos-machine');
+const {printReceipt, findItemByBarcode, tagItems, generateItemForReceipt, generateReceiptBody, getTotalPrice} = require('../pos-machine');
 
 it('sample test', () => {
     expect(printReceipt()).toBe(0);
@@ -37,5 +37,11 @@ describe('generate receipt body', () => {
         const expectText = `Coca Cola                       3          1
 Pepsi-Cola                      5          2`;
         expect(generateReceiptBody([{"id": "0001", "name" : "Coca Cola", "price": 3, "count": 1},{"id": "0003", "name" : "Pepsi-Cola", "price": 5, "count": 2}])).toEqual(expectText);
+    });
+});
+
+describe('get total price', () => {
+    it('should return all items total price format when given the items', () => {
+        expect(getTotalPrice([{"id": "0001", "name" : "Coca Cola", "price": 3, "count": 1},{"id": "0003", "name" : "Pepsi-Cola", "price": 5, "count": 2}])).toBe(13);
     });
 });
