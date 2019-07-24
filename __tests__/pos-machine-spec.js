@@ -1,10 +1,6 @@
 
 const {printReceipt, findItemByBarcode, tagItems, generateItemForReceipt, generateReceiptBody, getTotalPrice, generateReceipt} = require('../pos-machine');
 
-it('sample test', () => {
-    expect(printReceipt()).toBe(0);
-});
-
 describe('find item by barcode', () => {
     it('should return item details when find the item', () => {
         expect(findItemByBarcode('0001')).toEqual({"id": "0001", "name" : "Coca Cola", "price": 3});
@@ -57,5 +53,21 @@ Pepsi-Cola                      5          2
 ------------------------------------------------------------
 Price: 13`;
         expect(generateReceipt(receiptBody, 13)).toBe(expectText);
+    });
+});
+
+describe('print receipt', () => {
+    it('should return receipt at when given the items', () => {
+        spyOn(console, 'log');
+         const barcodes = ['0001', '0003', '0005', '0003'];
+        const expectText = `Receipts
+------------------------------------------------------------
+Coca Cola                       3          1
+Pepsi-Cola                      5          2
+Dr Pepper                       7          1
+------------------------------------------------------------
+Price: 20`;
+        printReceipt(barcodes);
+        expect(console.log).toHaveBeenCalledWith(expectText);
     });
 });

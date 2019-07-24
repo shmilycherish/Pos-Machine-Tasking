@@ -12,8 +12,9 @@ const items = [
     {"id": "0010", "name" : "Fanta", "price": 12}
 ];
 
-function printReceipt() {
-    return 0;
+function printReceipt(barcodes) {
+    let items = tagItems(barcodes);
+    console.log(generateReceipt(generateReceiptBody(items), getTotalPrice(items)));
 }
 
 function findItemByBarcode(barcode) {
