@@ -46,4 +46,8 @@ function generateSpace(count) {
     return result;
 }
 
-module.exports = {printReceipt, findItemByBarcode, tagItems, generateItemForReceipt};
+function generateReceiptBody(items) {
+    return items.map(item => generateItemForReceipt(item)).join('\n');
+}
+
+module.exports = {printReceipt, findItemByBarcode, tagItems, generateItemForReceipt, generateReceiptBody};
