@@ -1,5 +1,5 @@
 
-const {printReceipt, findItemByBarcode, tagItems} = require('../pos-machine');
+const {printReceipt, findItemByBarcode, tagItems, generateItemForReceipt} = require('../pos-machine');
 
 it('sample test', () => {
     expect(printReceipt()).toBe(0);
@@ -21,5 +21,12 @@ describe('tag items', () => {
             {"id": "0003", "name" : "Pepsi-Cola", "price": 5, "count": 2},
             {"id": "0005", "name" : "Dr Pepper", "price": 7, "count": 1}];
         expect(tagItems(['0001', '0003', '0005', '0003'])).toEqual(expectText);
+    });
+});
+
+describe('generate item line', () => {
+    it('should return item printable format when given the item', () => {
+        const expectText = "Coca Cola                       3          1";
+        expect(generateItemForReceipt({"id": "0001", "name" : "Coca Cola", "price": 3, "count": 1})).toEqual(expectText);
     });
 });

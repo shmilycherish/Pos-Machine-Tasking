@@ -34,4 +34,16 @@ function tagItems(barcodes) {
     }, [])
 }
 
-module.exports = {printReceipt, findItemByBarcode, tagItems};
+function generateItemForReceipt(item) {
+    return `${item.name}${generateSpace(32 - item.name.length)}${item.price}          ${item.count}`
+}
+
+function generateSpace(count) {
+    let result = '';
+    for (let i = 0; i < count; i++) {
+        result += ' ';
+    }
+    return result;
+}
+
+module.exports = {printReceipt, findItemByBarcode, tagItems, generateItemForReceipt};
