@@ -54,4 +54,13 @@ function getTotalPrice(items) {
     return items.reduce((total, item) => total + item.price * item.count, 0)
 }
 
-module.exports = {printReceipt, findItemByBarcode, tagItems, generateItemForReceipt, generateReceiptBody, getTotalPrice};
+function generateReceipt(receiptBody, total) {
+    return `Receipts
+------------------------------------------------------------
+${receiptBody}
+------------------------------------------------------------
+Price: ${total}`;
+}
+
+module.exports = {printReceipt, findItemByBarcode, tagItems,
+    generateItemForReceipt, generateReceiptBody, getTotalPrice, generateReceipt};
