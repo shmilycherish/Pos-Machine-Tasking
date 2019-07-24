@@ -20,4 +20,18 @@ function findItemByBarcode(barcode) {
    return items.find(item => item.id === barcode);
 }
 
-module.exports = {printReceipt, findItemByBarcode};
+function tagItems(barcodes) {
+    return barcodes.reduce((result, barcode) => {
+        let itemInResult = result.find(item => item.id === barcode);
+        if(itemInResult !== undefined) {
+            itemInResult.count++;
+        } else {
+            let item = findItemByBarcode(barcode);
+            item.count = 1;
+            result.push(item);
+        }
+        return result;
+    }, [])
+}
+
+module.exports = {printReceipt, findItemByBarcode, tagItems};
